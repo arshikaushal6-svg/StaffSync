@@ -13,7 +13,12 @@ import trainingRoutes from "./routes/trainingRoutes.js";
 dotenv.config();
 const app = express();
 
-app.use(cors({ origin: process.env.CLIENT_URL || "http://localhost:5173" }));
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://staff-sync-kappa.vercel.app"
+  ]
+}));
 app.use(express.json());
 
 app.get("/api/health", (_req, res) => res.json({ message: "StaffSync API is running" }));
